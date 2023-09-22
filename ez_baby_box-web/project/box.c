@@ -45,7 +45,7 @@ int install_seccomp(unsigned char *filt, unsigned short filt_len) {
          return 1;
     }
     
-    printf("干得漂亮! flag是vyctf{test_flag}");
+    printf("干得漂亮! flag是vyctf{th1s_is_c0de9ate_baby_b0x}");
 
     return 0;
 }
