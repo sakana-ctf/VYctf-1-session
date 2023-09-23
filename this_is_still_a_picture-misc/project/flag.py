@@ -1,62 +1,45 @@
+from PIL import Image as img
 import numpy as np
 import binascii as bs
-import re
-import random as rd
 
-a = open("flag.ascll").readlines()
-b = open("bin.xxd").readlines()
-flag_test = open("flag.test","a")
+def read_pic(path):
+    # 获取图像矩阵
+    pic = img.open(path)
+    pixel = pic.load()
+    # 以rgba格式分别区分
+    A = np.zeros((pic.size))
+    for x in range(pic.size[0]):
+        for y in range(pic.size[1]):
+            A[x][y] = pixel[x,y][3] // 255
+    return A
 
-null = b'\x00'.decode()
-matrix = np.zeros((10,84))
-random_data = ["1","2","3","4","5","6","7","8","9","a","b","c","d","e","f"]
+file = open("./xxd.png","w")
+a_line = []
+group_num = 0
+pic_title = "100010010101000001001110010001110000110100001010"
+xxds = []
+xxd_bins = []
+the_hex_num = 0
+for datas in read_pic("./flag.png"):
+    for data in datas:
+        group_num += 1
+        a_line.append(str(data)[0])
+        if group_num == 8:
+            the_hex_num += 1
+            xxd_data = "%x"%(int("".join(a_line),2))
+            if len(xxd_data) == 2:
+                xxd_bin = bs.unhexlify(xxd_data).decode("utf-8","ignore")
+                xxds.append(xxd_data)
+            else:
+                xxd_bin = bs.unhexlify("0"+xxd_data).decode("utf-8","ignore")
+                xxds.append("0"+xxd_data)
+            a_line = []
+            group_num = 0
+            xxd_bins.append(xxd_bin)
+            if the_hex_num == 16:
+                file.write("".join(xxds) + "  " + "".join(xxd_bins) + "\n")
+                the_hex_num = 0
+                xxds = []
+                xxd_bins = []
 
-def get_pad(matrix,pad_num):
-    # 将数据用0进行填充
-    matrix = np.pad(matrix,((0,0),
-                  (pad_num,pad_num)),
-                  mode = 'constant',
-                  constant_values = (0,0)
-                  )
-    len_x = len(matrix[0])
-    np_zeros = np.zeros((pad_num,len_x))
-    matrix = np.vstack((np_zeros,matrix,np_zeros))
-    return matrix
-
-def get_data(lines):
-    the_data = re.findall(r".{2}",lines)
-    data = ""
-    for i in the_data:
-        u = bs.unhexlify(i).decode("utf-8","ignore")
-        if u != null:
-            data += u
-        else:
-            data += "."
-    return data
-
-for lines in range(len(a)):
-    for word in range(len(a[lines])):
-        if a[lines][word] == "#":
-            matrix[lines][word] = 1
-
-matrix = get_pad(matrix.T,11)
-
-for y in range(len(matrix)):
-    lines = "00000000000000000000000000000000"
-    lines = list(lines)
-    for x in range(len(matrix[y])):
-        if matrix[y][x] == 1:
-            lines[x] = random_data[rd.randint(0,14)]
-    lines = "".join(lines)
-    #print(b[y][0:9]," ",lines[0:4]," ",lines[4:8]," ",lines[8:12]," ",lines[12:16]," ",lines[16:20]," ",lines[20:24]," ",lines[24:28]," ",lines[28:32],"  ",get_data(lines))
-    data = b[y][0:9]+" "+str(lines[0:4])+" "+str(lines[4:8])+" "+str(lines[8:12])+" "+str(lines[12:16])+" "+str(lines[16:20])+" "+str(lines[20:24])+" "+str(lines[24:28])+" "+str(lines[28:32])+"  "+str(get_data(lines))+"\n"
-    flag_test.write(data)
-
-
-
-
-
-
-
-
-
+file.close()
