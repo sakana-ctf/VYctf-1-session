@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://theme/dialog_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://theme/button.tres" type="StyleBox" id=2]
+[ext_resource path="res://theme/dialog_button.tres" type="StyleBox" id=3]
+[ext_resource path="res://script/dialog.gd" type="Script" id=4]
+[ext_resource path="res://img/立绘/AI立绘.png" type="Texture" id=5]
+[ext_resource path="res://img/立绘/hero.png" type="Texture" id=6]
+[ext_resource path="res://img/立绘/labor.png" type="Texture" id=7]
+[ext_resource path="res://img/立绘/soldier.png" type="Texture" id=8]
+
+[node name="Main" type="Node2D"]
+position = Vector2( 472, 554 )
+z_index = 10
+script = ExtResource( 4 )
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -453.0
+margin_top = -546.0
+margin_right = 447.0
+margin_bottom = -366.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/focus = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
+
+[node name="speak" type="Label" parent="Button"]
+anchor_left = 0.03
+anchor_top = 0.1
+anchor_right = 0.97
+anchor_bottom = 0.9
+margin_left = -20.0
+margin_top = -7.0
+margin_right = 20.0
+margin_bottom = 7.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+
+[node name="to_name" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -440.0
+margin_top = -359.0
+margin_right = -340.0
+margin_bottom = -316.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/normal = ExtResource( 2 )
+align = 1
+valign = 2
+
+[node name="AI" type="Sprite" parent="."]
+visible = false
+position = Vector2( 362, -435 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 5 )
+
+[node name="player" type="Sprite" parent="."]
+visible = false
+position = Vector2( -404, -434 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 6 )
+
+[node name="labor_left" type="Sprite" parent="."]
+visible = false
+position = Vector2( -404, -434 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 7 )
+
+[node name="soldier_left" type="Sprite" parent="."]
+visible = false
+position = Vector2( -404, -430 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 8 )
+
+[node name="labor_right" type="Sprite" parent="."]
+visible = false
+position = Vector2( 401, -434 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 7 )
+flip_h = true
+
+[node name="soldier_right" type="Sprite" parent="."]
+visible = false
+position = Vector2( 401, -430 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 8 )
+flip_h = true
+
+[node name="None" type="Node2D" parent="."]
+position = Vector2( 1, 0 )
+
+[connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]

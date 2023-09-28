@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/游戏界面.mp3-0294317c3dc76b25c173271023db5902.mp3str"
+
+[deps]
+
+source_file="res://music/游戏界面.mp3"
+dest_files=[ "res://.import/游戏界面.mp3-0294317c3dc76b25c173271023db5902.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

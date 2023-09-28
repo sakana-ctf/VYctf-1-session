@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://theme/font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://theme/button.tres" type="StyleBox" id=2]
+[ext_resource path="res://script/defeat.gd" type="Script" id=3]
+[ext_resource path="res://img/插画/money.png" type="Texture" id=4]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2( 1.05, 1.05 )
+script = ExtResource( 3 )
+
+[node name="Money" type="Sprite" parent="."]
+position = Vector2( 470.444, 265.5 )
+scale = Vector2( 2.93889, 2.93889 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 48.0
+margin_top = 57.0
+margin_right = 876.0
+margin_bottom = 349.0
+custom_fonts/font = ExtResource( 1 )
+text = "虽然按原剧情你可能没死, 但是我们没时间慢慢开发,后面
+摆烂了,只能委屈你死一死了(笑)
+
+不过也有好消息,现在你可以直接回到上一关卡.加油通往下
+一关吧!"
+
+[node name="play" type="Button" parent="."]
+margin_left = 555.0
+margin_top = 413.0
+margin_right = 864.0
+margin_bottom = 489.0
+custom_fonts/font = ExtResource( 1 )
+custom_styles/hover = ExtResource( 2 )
+custom_styles/disabled = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
+text = "回到上一关"
+
+[connection signal="button_down" from="play" to="." method="_on_play_button_down"]

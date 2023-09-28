@@ -1,5 +1,5 @@
 # binary
-  本题以[retdec](gitee.com/cryingn/retdec)工具为例进行解题. 
+  本题以[retdec](https://gitee.com/cryingn/retdec)工具为例进行解题. 
 
 # 解题思路
   在linux中通过`./retdec-decompiler flag`命令对二进制文件进行反编译, 得到文件:
