@@ -1,0 +1,59 @@
+<!DOCTYPE html>	      	 	   		      	      	  	      
+<html lang="en">  	     	  	      	   		     	       
+<head>      	 	  	  		    	      	     	       
+    <meta charset="UTF-8">       		 	     	   	       
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">     
+    <title>Snowflake Effect with Text</title>       	      	       	   
+    <style>  	 	   	  	  	     	  	  	 
+        body {       	     	   	 	     	    	  	  
+            overflow: hidden;       	  	     	     	   	 
+            background-color: #333;     	     	    	   	       
+            display: flex;  
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'cursive', sans-serif;
+            color: white;
+            font-size: 2em;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation-name: fall;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(calc(100vh + 10px));
+            }
+        }
+    </style>
+</head>
+<body>
+    Do you know snow?
+    <script>
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.className = 'snowflake';
+            snowflake.style.left = `${Math.random() * 100}vw`;
+            snowflake.style.animationDuration = `${2 + Math.random() * 3}s`;
+            snowflake.style.animationDelay = `${Math.random() * 2}s`;
+            document.body.appendChild(snowflake);
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+
+        setInterval(createSnowflake, 50); // hint: Steganographic Nature Of Whitespace
+    </script>
+</body>
+</html>
