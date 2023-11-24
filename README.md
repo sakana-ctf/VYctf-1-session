@@ -30,7 +30,7 @@ sakana战队的新人邀请赛, 主要面向新生与刚接触网络安全的选
 - scoreborad
     - borad.png: 成绩清单
     - certificate: 前十名选手证书
-    - borad.md: 解释
+    - [README.md](./scoreborad/README.md): 解释
 - tasks: 官方出题与writeup
 - README.md: 解释文件
 

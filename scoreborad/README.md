@@ -53,9 +53,9 @@
 ### 第三名: Y7syeu
 ![](./certificate/y7syeu.jpg)
 ### 第四名: Z3n1th
-`Z3n1th`选手flag提交较晚, 待实体证书完成后补上
+![](./certificate/Z3n1th.jpg)
 ### 第五名: T1ng
-![](./certificate/T1ng.png)
+![](./certificate/T1ng.jpg)
 ### 第六名: H4nn4h
 ![](./certificate/H4nn4h.jpg)
 ### 第七名: rootkits
@@ -63,6 +63,6 @@
 ### 第八名: zhangsan
 ![](./certificate/xuefeng.jpg)
 ### 第九名: Kada_Duck
-`Kada_Duck`选手反馈较晚, 待实体证书完成后补上
+![](./certificate/Kada_Duck.jpg)
 ### 第十名: oiseau
 ![](./certificate/oiseau.jpg)
